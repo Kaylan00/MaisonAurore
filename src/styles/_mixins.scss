@@ -1,0 +1,168 @@
+@use 'variables' as *;
+
+// === Breakpoints ===
+@mixin respond-to($breakpoint) {
+  @if $breakpoint == sm { @media (min-width: $bp-sm) { @content; } }
+  @else if $breakpoint == md { @media (min-width: $bp-md) { @content; } }
+  @else if $breakpoint == lg { @media (min-width: $bp-lg) { @content; } }
+  @else if $breakpoint == xl { @media (min-width: $bp-xl) { @content; } }
+  @else if $breakpoint == 2xl { @media (min-width: $bp-2xl) { @content; } }
+}
+
+@mixin below($breakpoint) {
+  @if $breakpoint == sm { @media (max-width: #{$bp-sm - 1px}) { @content; } }
+  @else if $breakpoint == md { @media (max-width: #{$bp-md - 1px}) { @content; } }
+  @else if $breakpoint == lg { @media (max-width: #{$bp-lg - 1px}) { @content; } }
+  @else if $breakpoint == xl { @media (max-width: #{$bp-xl - 1px}) { @content; } }
+}
+
+// === Layout ===
+@mixin container {
+  width: 100%;
+  max-width: $max-width;
+  margin: 0 auto;
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+}
+
+@mixin container-narrow {
+  width: 100%;
+  max-width: $max-width-narrow;
+  margin: 0 auto;
+  padding-left: clamp(1.5rem, 4vw, 4rem);
+  padding-right: clamp(1.5rem, 4vw, 4rem);
+}
+
+@mixin section-padding {
+  padding-top: $spacing-section;
+  padding-bottom: $spacing-section;
+}
+
+// === Typography ===
+@mixin heading-style {
+  font-family: $font-heading;
+  font-weight: 400;
+  line-height: 1.15;
+  letter-spacing: -0.02em;
+  color: $color-text;
+}
+
+@mixin body-style {
+  font-family: $font-body;
+  font-weight: 300;
+  line-height: 1.7;
+  color: $color-text-muted;
+}
+
+@mixin accent-style {
+  font-family: $font-accent;
+  font-weight: 300;
+  font-style: italic;
+  letter-spacing: 0.02em;
+}
+
+@mixin label-style {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  color: $color-gold;
+}
+
+// === Effects ===
+@mixin overlay($color: $color-overlay) {
+  &::after {
+    content: '';
+    position: absolute;
+    inset: 0;
+    background: $color;
+    z-index: 1;
+  }
+}
+
+@mixin image-cover {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+}
+
+@mixin gold-underline {
+  position: relative;
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: -8px;
+    left: 0;
+    width: 40px;
+    height: 1px;
+    background: $color-gold;
+  }
+}
+
+@mixin hover-lift {
+  transition: transform $transition-base, box-shadow $transition-base;
+  &:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1);
+  }
+}
+
+// === Buttons ===
+@mixin btn-primary {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: $color-gold;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: none;
+  cursor: pointer;
+  transition: background $transition-fast, transform $transition-fast;
+
+  &:hover {
+    background: $color-gold-dark;
+    transform: translateY(-1px);
+  }
+}
+
+@mixin btn-outline {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.75rem;
+  padding: 1rem 2.5rem;
+  background: transparent;
+  color: $color-white;
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.2em;
+  border: 1px solid rgba(255, 255, 255, 0.4);
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    background: $color-white;
+    color: $color-primary;
+    border-color: $color-white;
+  }
+}
+
+@mixin btn-outline-dark {
+  @include btn-outline;
+  color: $color-text;
+  border-color: $color-border;
+
+  &:hover {
+    background: $color-primary;
+    color: $color-white;
+    border-color: $color-primary;
+  }
+}

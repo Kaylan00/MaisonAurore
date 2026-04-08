@@ -1,0 +1,273 @@
+/* ================================================================
+   Rooms — Listing Page
+   ================================================================ */
+
+// ── Hero ──────────────────────────────────────────────────────────
+.page {
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 50vh;
+  min-height: 340px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.heroImage {
+  @include image-cover;
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: $color-overlay-dark;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+}
+
+.heroBreadcrumb {
+  @include label-style;
+  display: block;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: $spacing-md;
+
+  a {
+    color: $color-gold-light;
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-gold;
+    }
+  }
+}
+
+.separator {
+  display: inline-block;
+  margin: 0 0.5em;
+  opacity: 0.4;
+}
+
+.heroTitle {
+  @include heading-style;
+  color: $color-white;
+  font-size: clamp($font-size-3xl, 5vw, $font-size-5xl);
+}
+
+// ── Filter Tabs ───────────────────────────────────────────────────
+.filters {
+  background: $color-white;
+  border-bottom: 1px solid $color-border;
+  position: sticky;
+  top: $nav-height-scrolled;
+  z-index: $z-base + 1;
+}
+
+.filtersInner {
+  @include container;
+  display: flex;
+  justify-content: center;
+  gap: $spacing-xs;
+  padding-top: $spacing-md;
+  padding-bottom: $spacing-md;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+
+  &::-webkit-scrollbar {
+    display: none;
+  }
+}
+
+.filterBtn {
+  @include label-style;
+  color: $color-text-muted;
+  padding: 0.65rem 1.5rem;
+  border: 1px solid transparent;
+  background: transparent;
+  border-radius: 0;
+  white-space: nowrap;
+  cursor: pointer;
+  transition: all $transition-fast;
+
+  &:hover {
+    color: $color-text;
+  }
+}
+
+.filterBtnActive {
+  color: $color-gold;
+  border-bottom: 2px solid $color-gold;
+}
+
+// ── Listing Section ───────────────────────────────────────────────
+.listing {
+  @include section-padding;
+  background: $color-cream;
+}
+
+.listingInner {
+  @include container;
+}
+
+// ── Grid ──────────────────────────────────────────────────────────
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-2xl;
+
+  @include respond-to(lg) {
+    grid-template-columns: repeat(2, 1fr);
+    gap: $spacing-3xl $spacing-2xl;
+  }
+}
+
+// ── Room Card ─────────────────────────────────────────────────────
+.card {
+  display: block;
+  text-decoration: none;
+  color: inherit;
+  background: $color-white;
+  overflow: hidden;
+  transition: transform $transition-base, box-shadow $transition-base;
+
+  &:hover {
+    transform: translateY(-6px);
+    box-shadow: 0 24px 48px rgba(0, 0, 0, 0.08);
+
+    .cardImage {
+      transform: scale(1.05);
+    }
+
+    .cardArrow {
+      transform: translateX(4px);
+    }
+  }
+}
+
+.cardImageWrap {
+  position: relative;
+  overflow: hidden;
+  aspect-ratio: 3 / 4;
+
+  @include respond-to(lg) {
+    aspect-ratio: 3 / 4;
+  }
+}
+
+.cardImage {
+  @include image-cover;
+  transition: transform $transition-slow;
+}
+
+.cardBadge {
+  @include label-style;
+  position: absolute;
+  top: $spacing-md;
+  left: $spacing-md;
+  background: $color-white;
+  color: $color-primary;
+  padding: 0.4rem 1rem;
+  z-index: 1;
+}
+
+.cardBody {
+  padding: $spacing-lg $spacing-lg $spacing-xl;
+}
+
+.cardName {
+  @include heading-style;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-xs;
+}
+
+.cardDesc {
+  @include body-style;
+  font-size: $font-size-sm;
+  line-height: 1.7;
+  margin-bottom: $spacing-md;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cardMeta {
+  display: flex;
+  align-items: center;
+  gap: 0.75rem;
+  margin-bottom: $spacing-lg;
+  padding-bottom: $spacing-lg;
+  border-bottom: 1px solid $color-border;
+}
+
+.cardMetaItem {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 400;
+  color: $color-text-muted;
+  letter-spacing: 0.05em;
+}
+
+.cardMetaDot {
+  width: 3px;
+  height: 3px;
+  border-radius: 50%;
+  background: $color-gold;
+}
+
+.cardFooter {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.cardPrice {
+  @include heading-style;
+  font-size: $font-size-lg;
+  color: $color-text;
+}
+
+.cardPriceFrom {
+  @include accent-style;
+  font-size: $font-size-sm;
+  color: $color-text-muted;
+}
+
+.cardPriceUnit {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 300;
+  color: $color-text-muted;
+}
+
+.cardLink {
+  @include label-style;
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  color: $color-gold;
+  transition: color $transition-fast;
+}
+
+.cardArrow {
+  display: inline-block;
+  transition: transform $transition-fast;
+}
+
+// ── Empty State ───────────────────────────────────────────────────
+.empty {
+  @include accent-style;
+  text-align: center;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+  padding: $spacing-3xl 0;
+}

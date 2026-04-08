@@ -1,0 +1,113 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  background: $color-white;
+  overflow: hidden;
+  @include hover-lift;
+}
+
+.imageWrap {
+  position: relative;
+  aspect-ratio: 4 / 3;
+  overflow: hidden;
+}
+
+.image {
+  @include image-cover;
+  transition: transform $transition-slow;
+
+  .card:hover & {
+    transform: scale(1.08);
+  }
+}
+
+.category {
+  position: absolute;
+  top: $spacing-md;
+  left: $spacing-md;
+  @include label-style;
+  font-size: 0.6rem;
+  background: $color-gold;
+  color: $color-white;
+  padding: 0.35rem 0.85rem;
+  letter-spacing: 0.15em;
+  z-index: 2;
+}
+
+.body {
+  padding: $spacing-lg;
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+
+.name {
+  @include heading-style;
+  font-size: $font-size-xl;
+  margin-bottom: $spacing-xs;
+}
+
+.description {
+  @include body-style;
+  font-size: $font-size-sm;
+  flex: 1;
+  margin-bottom: $spacing-md;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.footer {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding-top: $spacing-sm;
+  border-top: 1px solid $color-border;
+}
+
+.price {
+  display: flex;
+  align-items: baseline;
+  gap: 2px;
+}
+
+.priceAmount {
+  font-family: $font-heading;
+  font-size: $font-size-lg;
+  font-weight: 400;
+  color: $color-text;
+}
+
+.priceLabel {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  color: $color-text-muted;
+  font-weight: 300;
+}
+
+.discover {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $color-gold;
+  transition: gap $transition-fast, color $transition-fast;
+
+  &:hover {
+    color: $color-gold-dark;
+    gap: 0.65rem;
+  }
+
+  svg {
+    transition: transform $transition-fast;
+  }
+
+  &:hover svg {
+    transform: translateX(2px);
+  }
+}

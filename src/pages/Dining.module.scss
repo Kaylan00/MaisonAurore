@@ -1,0 +1,256 @@
+/* ============================================
+   Dining Page
+   ============================================ */
+
+// --- Hero ---
+.page {
+  overflow: hidden;
+}
+
+.hero {
+  position: relative;
+  height: 50vh;
+  min-height: 380px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  overflow: hidden;
+}
+
+.heroImage {
+  @include image-cover;
+  position: absolute;
+  inset: 0;
+}
+
+.heroOverlay {
+  position: absolute;
+  inset: 0;
+  background: $color-overlay-dark;
+  z-index: 1;
+}
+
+.heroContent {
+  position: relative;
+  z-index: 2;
+  text-align: center;
+  color: $color-white;
+}
+
+.breadcrumb {
+  @include label-style;
+  color: rgba(255, 255, 255, 0.6);
+  margin-bottom: $spacing-md;
+
+  a {
+    color: rgba(255, 255, 255, 0.6);
+    transition: color $transition-fast;
+
+    &:hover {
+      color: $color-gold-light;
+    }
+  }
+}
+
+.breadcrumbSep {
+  margin: 0 0.5rem;
+  opacity: 0.4;
+}
+
+.breadcrumbCurrent {
+  color: $color-white;
+}
+
+.heroTitle {
+  @include heading-style;
+  color: $color-white;
+  font-size: clamp($font-size-3xl, 5vw, $font-size-5xl);
+}
+
+// --- Intro ---
+.intro {
+  @include section-padding;
+}
+
+.introInner {
+  @include container-narrow;
+  text-align: center;
+}
+
+.introText {
+  @include accent-style;
+  font-size: clamp($font-size-md, 2vw, $font-size-xl);
+  color: $color-text-muted;
+  line-height: 1.8;
+}
+
+// --- Restaurants ---
+.restaurants {
+  @include container;
+  padding-bottom: $spacing-section;
+}
+
+.restaurantRow {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  align-items: center;
+  margin-bottom: $spacing-section;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+
+  &.reversed {
+    @include respond-to(lg) {
+      .restaurantImageWrap {
+        order: 2;
+      }
+
+      .restaurantContent {
+        order: 1;
+      }
+    }
+  }
+}
+
+.restaurantImageWrap {
+  overflow: hidden;
+}
+
+.restaurantImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+  transition: transform $transition-slow;
+
+  .restaurantRow:hover & {
+    transform: scale(1.03);
+  }
+}
+
+.restaurantContent {
+  padding: $spacing-md 0;
+
+  @include respond-to(lg) {
+    padding: $spacing-lg 0;
+  }
+}
+
+.cuisineLabel {
+  @include label-style;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.restaurantName {
+  @include heading-style;
+  font-size: clamp($font-size-2xl, 3vw, $font-size-3xl);
+  margin-bottom: $spacing-md;
+}
+
+.restaurantDesc {
+  @include body-style;
+  margin-bottom: $spacing-lg;
+}
+
+.restaurantMeta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: $spacing-lg;
+  margin-bottom: $spacing-xl;
+  padding-top: $spacing-md;
+  border-top: 1px solid $color-border;
+}
+
+.metaItem {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.metaLabel {
+  font-family: $font-body;
+  font-size: $font-size-xs;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 0.15em;
+  color: $color-text-light;
+}
+
+.metaValue {
+  font-family: $font-body;
+  font-size: $font-size-sm;
+  font-weight: 400;
+  color: $color-text;
+}
+
+.reserveBtn {
+  @include btn-primary;
+}
+
+// --- Private Dining CTA ---
+.privateDining {
+  background: $color-primary;
+  @include section-padding;
+}
+
+.privateDiningInner {
+  @include container;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: $spacing-xl;
+  align-items: center;
+
+  @include respond-to(lg) {
+    grid-template-columns: 1fr 1fr;
+    gap: $spacing-3xl;
+  }
+}
+
+.privateDiningImageWrap {
+  overflow: hidden;
+}
+
+.privateDiningImage {
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  object-fit: cover;
+  display: block;
+}
+
+.privateDiningContent {
+  color: $color-white;
+
+  // Override SectionTitle colors inside dark section
+  :global {
+    .sectionTitle .label,
+    span[class*='label'] {
+      color: $color-gold-light;
+    }
+
+    h2[class*='title'] {
+      color: $color-white;
+    }
+
+    div[class*='line'] {
+      background: $color-gold-light;
+    }
+  }
+}
+
+.privateDiningText {
+  @include body-style;
+  color: rgba(255, 255, 255, 0.65);
+  margin-bottom: $spacing-xl;
+}
+
+.privateDiningBtn {
+  @include btn-outline;
+}

@@ -1,0 +1,69 @@
+.sectionTitle {
+  margin-bottom: $spacing-2xl;
+
+  &.center {
+    text-align: center;
+
+    .line {
+      margin-left: auto;
+      margin-right: auto;
+    }
+  }
+
+  &.left {
+    text-align: left;
+
+    .line {
+      margin-left: 0;
+    }
+  }
+
+  &.light {
+    .label {
+      color: $color-gold-light;
+    }
+
+    .title {
+      color: $color-white;
+    }
+
+    .line {
+      background: $color-gold-light;
+    }
+
+    .subtitle {
+      color: rgba(255, 255, 255, 0.65);
+    }
+  }
+}
+
+.label {
+  @include label-style;
+  display: block;
+  margin-bottom: $spacing-sm;
+}
+
+.title {
+  @include heading-style;
+  font-size: clamp($font-size-2xl, 4vw, $font-size-4xl);
+  margin-bottom: $spacing-md;
+}
+
+.line {
+  width: 50px;
+  height: 1px;
+  background: $color-gold;
+  margin-bottom: $spacing-md;
+}
+
+.subtitle {
+  @include accent-style;
+  font-size: $font-size-lg;
+  color: $color-text-muted;
+  max-width: 560px;
+
+  .center & {
+    margin-left: auto;
+    margin-right: auto;
+  }
+}

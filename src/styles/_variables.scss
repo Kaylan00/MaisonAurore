@@ -1,0 +1,70 @@
+// === Color Palette ===
+$color-primary: #1b1b2f;
+$color-primary-light: #2d2d4a;
+$color-gold: #b5a08a;
+$color-gold-light: #c9b8a5;
+$color-gold-dark: #9a8672;
+$color-cream: #f7f3ed;
+$color-cream-dark: #ece5d9;
+$color-white: #ffffff;
+$color-black: #0a0a0a;
+$color-text: #1b1b2f;
+$color-text-muted: #7a7a7a;
+$color-text-light: #a3a3a3;
+$color-border: #e0dbd3;
+$color-overlay: rgba(27, 27, 47, 0.6);
+$color-overlay-dark: rgba(10, 10, 10, 0.7);
+
+// === Typography ===
+$font-heading: 'Playfair Display', 'Georgia', serif;
+$font-body: 'Inter', 'Helvetica Neue', sans-serif;
+$font-accent: 'Cormorant Garamond', 'Georgia', serif;
+
+$font-size-xs: 0.75rem;
+$font-size-sm: 0.875rem;
+$font-size-base: 1rem;
+$font-size-md: 1.125rem;
+$font-size-lg: 1.25rem;
+$font-size-xl: 1.5rem;
+$font-size-2xl: 2rem;
+$font-size-3xl: 2.5rem;
+$font-size-4xl: 3.5rem;
+$font-size-5xl: 4.5rem;
+$font-size-hero: clamp(3rem, 6vw, 6rem);
+
+// === Spacing ===
+$spacing-xs: 0.5rem;
+$spacing-sm: 1rem;
+$spacing-md: 1.5rem;
+$spacing-lg: 2rem;
+$spacing-xl: 3rem;
+$spacing-2xl: 4rem;
+$spacing-3xl: 6rem;
+$spacing-4xl: 8rem;
+$spacing-section: clamp(4rem, 8vw, 8rem);
+
+// === Layout ===
+$max-width: 1400px;
+$max-width-narrow: 900px;
+$nav-height: 90px;
+$nav-height-scrolled: 70px;
+
+// === Breakpoints ===
+$bp-sm: 576px;
+$bp-md: 768px;
+$bp-lg: 992px;
+$bp-xl: 1200px;
+$bp-2xl: 1440px;
+
+// === Transitions ===
+$transition-fast: 0.3s cubic-bezier(0.25, 0, 0.25, 1);
+$transition-base: 0.5s cubic-bezier(0.25, 0, 0.25, 1);
+$transition-slow: 0.8s cubic-bezier(0.75, 0, 0.25, 1);
+$transition-reveal: 1.2s cubic-bezier(0.75, 0, 0.25, 1);
+
+// === Z-index ===
+$z-base: 1;
+$z-nav: 100;
+$z-overlay: 200;
+$z-modal: 300;
+$z-preloader: 1000;
